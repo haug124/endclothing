@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url: https://content.da.live/stephen-garner-adobe/EndClothing/
+    url: https://content.da.live/haug124/endclothing/
     type: markup
 
 folders:
