@@ -13,14 +13,14 @@
           "AC-Source-Locale": "en",
           "AC-ENVIRONMENT-ID": "NiMuPicDkGiXhub4u2ahNH",
           "AC-Locale-Source": "default",
-          "Magento-Store-View-Code": "default"
+          "Magento-Store-View-Code": "en"
         }
       },
       "analytics": {
         "base-currency-code": "USD",
         "environment": "Testing",
         "environment-id": "NiMuPicDkGiXhub4u2ahNH",
-        "store-code": "YOUR_STORE_CODE",
+        "store-code": "en",
         "store-id": "YOUR_STORE_ID",
         "store-name": "YOUR_STORE_NAME",
         "store-url": "YOUR_STORE_URL",
