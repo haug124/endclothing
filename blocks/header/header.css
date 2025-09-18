@@ -10,8 +10,8 @@
 
 /* Top white bar */
 header .top-bar {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-800);
   height: var(--top-bar-height);
   display: flex;
   align-items: center;
@@ -23,6 +23,7 @@ header .top-bar {
   left: 0;
   right: 0;
   z-index: 4;
+  border-bottom: 1px solid var(--color-neutral-300);
 }
 
 header .top-bar .top-bar-content {
@@ -80,6 +81,7 @@ header .nav-wrapper {
   position: fixed;
   top: calc(var(--top-bar-height) + var(--banner-height));
   border-bottom: 1px solid var(--color-neutral-300);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header nav {
@@ -212,7 +214,7 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 
 /* Scrolling Banner styles - placed before nav-brand to fix specificity order */
 header .scrolling-banner {
-  background-color: #000;
+  background-color: var(--color-brand-500);
   color: #fff;
   height: var(--banner-height);
   display: flex;
@@ -410,8 +412,11 @@ header nav .nav-sections ul > li > a {
   letter-spacing: var(--type-body-1-strong-letter-spacing);
   color: var(--color-neutral-800);
   text-decoration: none;
-  padding: 0.8rem 0;
+  padding: 1.2rem 0;
   position: relative;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li a {
@@ -419,7 +424,7 @@ header nav .nav-sections .default-content-wrapper > ul > li a {
 }
 
 header nav .nav-sections ul > li > a:hover {
-  color: var(--color-brand-700);
+  color: var(--color-brand-500);
   text-decoration: none;
 }
 
@@ -430,7 +435,7 @@ header nav .nav-sections ul > li > a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--color-brand-700);
+  background-color: var(--color-brand-500);
   transition: width 0.3s ease;
 }
 
