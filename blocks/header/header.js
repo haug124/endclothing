@@ -524,15 +524,10 @@ export default async function decorate(block) {
      </div>
       <div class="top-bar-right">
         <select class="country-selector" aria-label="Select country">
-          <option value="gb">GB</option>
           <option value="us">US</option>
-          <option value="eu">EU</option>
+          <option value="eu"${window.sessionStorage.getItem('countryCode') === 'eu' ? 'selected' : ''}>DE</option>
         </select>
-        <select class="currency-selector" aria-label="Select currency">
-          <option value="gbp">£ GBP</option>
-          <option value="usd">$ USD</option>
-          <option value="eur">€ EUR</option>
-        </select>
+       
         <a href="/help">Help</a>
         <a href="/account">Account</a>
       </div>
@@ -558,6 +553,60 @@ export default async function decorate(block) {
     overlay.classList.remove('show');
     toggleMenu(nav, navSections, false);
   });
+
+  const selectElement = document.querySelector(".country-selector");
+
+  selectElement.addEventListener("change", (event) => {
+    const configJSON = JSON.parse(window.sessionStorage.getItem('config'));
+    if(event.target.value === 'eu') {
+      configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'de';
+      configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'de';
+    } else {
+      configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'en';
+      configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'en';
+    }
+
+    window.sessionStorage.setItem('countryCode', event.target.value);
+
+    configJSON[':expiry'] = Math.round(Date.now() / 1000) + 7200;
+    window.sessionStorage.setItem('config', JSON.stringify(configJSON));
+
+    // Handle URL locale switching based on target value
+    let newUrl = window.location.href;
+    let urlChanged = false;
+    
+    if(event.target.value === 'eu') {
+      // Switch to German locale
+      if(newUrl.includes('/en/')) {
+        newUrl = newUrl.replace('/en/', '/de/');
+        urlChanged = true;
+      }
+      if(newUrl.includes('-en')) {
+        newUrl = newUrl.replace(/-en/g, '-de');
+        urlChanged = true;
+      }
+    } else {
+      // Switch to English locale (us)
+      if(newUrl.includes('/de/')) {
+        newUrl = newUrl.replace('/de/', '/en/');
+        urlChanged = true;
+      }
+      if(newUrl.includes('-de')) {
+        newUrl = newUrl.replace(/-de/g, '-en');
+        urlChanged = true;
+      }
+    }
+    
+    // Only navigate if URL actually changed
+    if(urlChanged) {
+      window.location.href = newUrl;
+    } else {
+      // If no URL patterns matched, just reload to apply the new config
+      window.location.reload();
+    }
+
+  });
+
 
   // hamburger for mobile
   const hamburger = document.createElement('div');

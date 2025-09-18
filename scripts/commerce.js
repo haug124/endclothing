@@ -531,6 +531,15 @@ export async function getConfigFromSession() {
     if (!config.ok) throw new Error('Failed to fetch config');
     const configJSON = await config.json();
     configJSON[':expiry'] = Math.round(Date.now() / 1000) + 7200;
+
+    if(window.sessionStorage.getItem('countryCode')=== 'eu') {
+      configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'de';
+      configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'de';
+    } else {
+      configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'en';
+      configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'en';
+    }
+
     window.sessionStorage.setItem('config', JSON.stringify(configJSON));
     return configJSON;
   }
@@ -563,7 +572,21 @@ function createHashFromObject(obj, length = 5) {
  */
 export async function commerceEndpointWithQueryParams() {
   const urlWithQueryParams = new URL(getConfigValue('commerce-endpoint'));
-  const headers = getHeaders('cs');
+  // const headers = getHeaders('cs');
+
+  const headers = 
+  {
+    "Store": "default",
+    "AC-View-ID": "ddc78db3-1fb1-49b5-9a12-03d005f89dc2",
+    "AC-Price-Book-ID": "eu",
+    "AC-Source-Locale": "de",
+    "AC-ENVIRONMENT-ID": "NiMuPicDkGiXhub4u2ahNH",
+    "AC-Locale-Source": "default",
+    "Magento-Store-View-Code": "eu"
+};
+
+
+
   const shortHash = createHashFromObject(headers);
   urlWithQueryParams.searchParams.append('cb', shortHash);
   return urlWithQueryParams;
