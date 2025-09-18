@@ -109,16 +109,7 @@ export default async function decorate(block) {
         <div class="footer-center">
         </div>
         <div class="footer-right">
-          <div class="payment-methods">
-            <span class="payment-icon mastercard"></span>
-            <span class="payment-icon amex"></span>
-            <span class="payment-icon discover"></span>
-            <span class="payment-icon jcb"></span>
-            <span class="payment-icon visa"></span>
-            <span class="payment-icon paypal"></span>
-            <span class="payment-icon klarna"></span>
-            <span class="payment-icon clearpay"></span>
-          </div>
+
           <div class="copyright">
             Copyright © Ashworth and Parker Limited (t/a END.) 2025 | All Rights Reserved<br>
             Company registration number: 06866013 | VAT number: GB 389764913
