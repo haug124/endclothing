@@ -12,11 +12,11 @@
 
 /* stylelint-disable no-empty-source */
 :root, .dropin-design {
-  /* ON.com inspired design tokens */
-  --color-brand-300: #009ca7;
-  --color-brand-500: #009ca7;
-  --color-brand-600: #007a85;
-  --color-brand-700: #005f66;
+  /* Black and white design tokens */
+  --color-brand-300: #000;
+  --color-brand-500: #000;
+  --color-brand-600: #000;
+  --color-brand-700: #000;
   --color-neutral-50: #fff;
   --color-neutral-100: #f8f9fa;
   --color-neutral-200: #f1f3f4;
@@ -27,21 +27,21 @@
   --color-neutral-700: #3c4043;
   --color-neutral-800: #202124;
   --color-neutral-900: #000;
-  --color-positive-200: #eff5ef;
-  --color-positive-500: #7fb078;
-  --color-positive-800: #53824c;
-  --color-informational-200: #eeeffb;
-  --color-informational-500: #6978d9;
-  --color-informational-800: #5d6dd6;
-  --color-warning-200: #fdf3e9;
-  --color-warning-500: #e79f5c;
-  --color-warning-800: #cc7a2e;
-  --color-alert-200: #ffebeb;
-  --color-alert-500: #db7070;
-  --color-alert-800: #c35050;
-  --color-button-active: var(--color-brand-700);
+  --color-positive-200: #f5f5f5;
+  --color-positive-500: #666;
+  --color-positive-800: #333;
+  --color-informational-200: #f5f5f5;
+  --color-informational-500: #666;
+  --color-informational-800: #333;
+  --color-warning-200: #f5f5f5;
+  --color-warning-500: #666;
+  --color-warning-800: #333;
+  --color-alert-200: #f5f5f5;
+  --color-alert-500: #666;
+  --color-alert-800: #333;
+  --color-button-active: var(--color-neutral-900);
   --color-button-focus: var(--color-neutral-400);
-  --color-button-hover: var(--color-brand-600);
+  --color-button-hover: var(--color-neutral-800);
   --color-action-button-active: var(--color-neutral-50);
   --color-action-button-hover: var(--color-neutral-300);
   --color-opacity-16: rgb(255 255 255 / 16%);
@@ -127,9 +127,9 @@
   /* Additional tokens */
   --type-fixed-font-family: 'Inter', "Roboto Mono", menlo, consolas, "Liberation Mono", monospace, system-ui, sans-serif;
   --background-color: var(--color-neutral-50);
-  --on-primary-color: #009ca7;
+  --on-primary-color: #000;
   --on-secondary-color: #f8f9fa;
-  --on-accent-color: #005f66;
+  --on-accent-color: #000;
   --nav-height: 6.4rem;
 }
 
@@ -285,7 +285,7 @@ button {
 
 /* links */
 a:not(.dropin-design a) {
-  color: var(--color-brand-500);
+  color: var(--color-neutral-900);
   font: var(--type-body-1-strong-font);
   letter-spacing: var(--type-body-1-strong-letter-spacing);
   text-decoration: none;
@@ -293,7 +293,7 @@ a:not(.dropin-design a) {
 }
 
 a:not(.dropin-design a):hover {
-  color: var(--color-brand-600);
+  color: var(--color-neutral-700);
   text-decoration: underline;
 }
 
@@ -304,7 +304,7 @@ button.button {
   display: inline-block;
   max-width: 100%;
   margin: var(--spacing-small) 0;
-  border: 2px solid var(--color-brand-500);
+  border: 2px solid var(--color-neutral-900);
   border-radius: 0;
   padding: 12px 24px;
   font: var(--type-button-2-font);
@@ -314,7 +314,7 @@ button.button {
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--color-brand-500);
+  background-color: var(--color-neutral-900);
   color: var(--color-neutral-50);
   cursor: pointer;
   overflow: hidden;
@@ -330,8 +330,8 @@ main a.button:focus,
 button.button:hover,
 button.button:focus {
   background-color: transparent;
-  color: var(--color-brand-500);
-  border-color: var(--color-brand-500);
+  color: var(--color-neutral-900);
+  border-color: var(--color-neutral-900);
   cursor: pointer;
 }
 
@@ -506,7 +506,7 @@ h3 {
 
 /* Clean focus states */
 *:focus {
-  outline: 2px solid var(--color-brand-500);
+  outline: 2px solid var(--color-neutral-900);
   outline-offset: 2px;
 }
 
@@ -527,7 +527,7 @@ button, .button {
 }
 
 button:focus, .button:focus {
-  outline: 2px solid var(--color-brand-500);
+  outline: 2px solid var(--color-neutral-900);
   outline-offset: 2px;
 }
 

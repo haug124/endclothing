@@ -571,7 +571,39 @@ export default async function decorate(block) {
     configJSON[':expiry'] = Math.round(Date.now() / 1000) + 7200;
     window.sessionStorage.setItem('config', JSON.stringify(configJSON));
 
-    window.location.reload();
+    // Handle URL locale switching based on target value
+    let newUrl = window.location.href;
+    let urlChanged = false;
+    
+    if(event.target.value === 'eu') {
+      // Switch to German locale
+      if(newUrl.includes('/en/')) {
+        newUrl = newUrl.replace('/en/', '/de/');
+        urlChanged = true;
+      }
+      if(newUrl.includes('-en')) {
+        newUrl = newUrl.replace(/-en/g, '-de');
+        urlChanged = true;
+      }
+    } else {
+      // Switch to English locale (us)
+      if(newUrl.includes('/de/')) {
+        newUrl = newUrl.replace('/de/', '/en/');
+        urlChanged = true;
+      }
+      if(newUrl.includes('-de')) {
+        newUrl = newUrl.replace(/-de/g, '-en');
+        urlChanged = true;
+      }
+    }
+    
+    // Only navigate if URL actually changed
+    if(urlChanged) {
+      window.location.href = newUrl;
+    } else {
+      // If no URL patterns matched, just reload to apply the new config
+      window.location.reload();
+    }
 
   });
 

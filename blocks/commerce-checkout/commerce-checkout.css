@@ -277,7 +277,7 @@
 .order-confirmation-footer__contact-support a {
     font: var(--type-body-2-strong-font);
     letter-spacing: var(--type-body-2-strong-letter-spacing);
-    color: var(--color-brand-500);
+    color: var(--color-neutral-900);
     cursor: pointer;
 }
 
