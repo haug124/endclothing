@@ -564,7 +564,7 @@ export default async function decorate(block) {
       configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'de';
       configJSON['public']['default']['headers']['cs']['AC-Price-Book-ID'] = 'eu';
     } 
-     if(event.target.value === 'us-vip') {
+     else if(event.target.value === 'us-vip') {
       configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'en';
       configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'en';
       configJSON['public']['default']['headers']['cs']['AC-Price-Book-ID'] = 'vip';
