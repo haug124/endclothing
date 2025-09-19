@@ -988,9 +988,3 @@ li
   max-width: 15rem;
   max-height: 15rem;
 }
-
-
-#nav > div.section.nav-brand > div > p > a
-{
-    display: none;
-}

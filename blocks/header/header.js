@@ -526,6 +526,7 @@ export default async function decorate(block) {
         <select class="country-selector" aria-label="Select country">
           <option value="us">US</option>
           <option value="eu"${window.sessionStorage.getItem('countryCode') === 'eu' ? 'selected' : ''}>DE</option>
+          <option value="us-vip"${window.sessionStorage.getItem('countryCode') === 'us-vip' ? 'selected' : ''}>US VIP</option>
         </select>
        
         <a href="/help">Help</a>
@@ -561,9 +562,17 @@ export default async function decorate(block) {
     if(event.target.value === 'eu') {
       configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'de';
       configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'de';
-    } else {
+      configJSON['public']['default']['headers']['cs']['AC-Price-Book-ID'] = 'eu';
+    } 
+     if(event.target.value === 'us-vip') {
       configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'en';
       configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'en';
+      configJSON['public']['default']['headers']['cs']['AC-Price-Book-ID'] = 'vip';
+    }
+    else {
+      configJSON['public']['default']['headers']['cs']['Magento-Store-View-Code'] = 'en';
+      configJSON['public']['default']['headers']['cs']['AC-Source-Locale'] = 'en';
+      configJSON['public']['default']['headers']['cs']['AC-Price-Book-ID'] = 'us';
     }
 
     window.sessionStorage.setItem('countryCode', event.target.value);
