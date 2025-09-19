@@ -32,7 +32,7 @@ body.modal-open {
     border-radius: 0;
     padding: 0;
     background-color: transparent;
-    color: var(--color-brand-600);
+    color: var(--color-neutral-800);
     line-height: 0;
 }
 

@@ -46,9 +46,9 @@
 
 .block.product-list-page .search__view-facets button[data-count]::after {
     align-items: center;
-    background-color: var(--color-brand-500);
+    background-color: var(--color-neutral-900);
     border-radius: 50%;
-    color: var(--color-neutral-100);
+    color: var(--color-neutral-50);
     content: attr(data-count);
     display: flex;
     font-size: 0.8em;
@@ -63,8 +63,8 @@
 }
 
 .block.product-list-page .search__view-facets button:hover {
-    border-color: var(--color-brand-500);
-    background-color: var(--color-brand-500);
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-neutral-900);
     color: var(--color-neutral-50);
 }
 

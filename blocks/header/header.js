@@ -575,14 +575,21 @@ export default async function decorate(block) {
     let newUrl = window.location.href;
     let urlChanged = false;
     
+    // Split URL to get protocol+domain and path parts
+    const urlParts = newUrl.split('/', 3); // ['https:', '', 'domain.com']
+    const baseUrl = urlParts.join('/'); // 'https://domain.com'
+    const pathPart = newUrl.substring(baseUrl.length); // everything after domain
+    
     if(event.target.value === 'eu') {
       // Switch to German locale
       if(newUrl.includes('/en/')) {
         newUrl = newUrl.replace('/en/', '/de/');
         urlChanged = true;
       }
-      if(newUrl.includes('-en')) {
-        newUrl = newUrl.replace(/-en/g, '-de');
+      // Only replace -en patterns in the path part (after first /)
+      if(pathPart.includes('-en')) {
+        const newPathPart = pathPart.replace(/-en/g, '-de');
+        newUrl = baseUrl + newPathPart;
         urlChanged = true;
       }
     } else {
@@ -591,8 +598,10 @@ export default async function decorate(block) {
         newUrl = newUrl.replace('/de/', '/en/');
         urlChanged = true;
       }
-      if(newUrl.includes('-de')) {
-        newUrl = newUrl.replace(/-de/g, '-en');
+      // Only replace -de patterns in the path part (after first /)
+      if(pathPart.includes('-de')) {
+        const newPathPart = pathPart.replace(/-de/g, '-en');
+        newUrl = baseUrl + newPathPart;
         urlChanged = true;
       }
     }
